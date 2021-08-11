@@ -7,8 +7,8 @@ class OrderItem extends Component {
         super(props);
         this.state = {
             editing: true,
-            stars: 0,
-            comment: ""
+            stars: props.data.star || 0,
+            comment: props.data.comment || "",
         }
     }
 
@@ -16,7 +16,7 @@ class OrderItem extends Component {
     render() {
 
         // 从父组件也就是OrderList中解构出来的
-        const { shop, product, price, picture, ifCommented } = this.props.data;
+        const { shop, product, price, picture, ifCommenteda } = this.props.data;
         
         return (
             <div className="orderItem">
@@ -30,7 +30,7 @@ class OrderItem extends Component {
                         <div className="orderItem__price">{price}</div>
                         <div>
                             {
-                                ifCommented ? (
+                                (ifCommenteda) ? (
                                     <button className="orderItem__btn orderItem__btn--grey">已评价</button>
                                 ) : (
                                     <button className="orderItem__btn orderItem__btn--red" onClick={this.handleOpenEditArea()}>评价</button>
@@ -62,10 +62,10 @@ class OrderItem extends Component {
             <div>
                 {
                     [1,2,3,4,5].map((item,index) => {
-                        const light = stars >= item ?
+                        const lightClass = stars >= item ?
                         "orderItem__star--light" : "";
                         return (
-                          <span key={index} onClick={this.handleClickStars.bind(this, item)}>★</span>
+                          <span className={"orderItem__star" + lightClass} key={index} onClick={this.handleClickStars.bind(this, item)}>★</span>
                         )
                     })
                 }
@@ -98,7 +98,7 @@ class OrderItem extends Component {
                   </button>  
                   <button 
                     className="orderItem__btn orderItem__btn--red" 
-                    ocClick={this.handleCancelComment}
+                    onClick={this.handleCancelComment}
                   >
                       取消
                   </button>  
@@ -108,8 +108,11 @@ class OrderItem extends Component {
     }
 
     handleSubmitComment = () => {
-        const {id} = this.props.data;
-        const {comment, stars} = this.state;
+        // fetch('/saveComment').then(() => {
+
+        // })
+        const { id } = this.props.data;
+        const { comment, stars } = this.state;
         this.setState({
             editing: false
         })
@@ -119,8 +122,8 @@ class OrderItem extends Component {
     handleCancelComment(){
         this.setState({
             editing: false,
-            comment: "",
-            stars: 0
+            stars: this.props.data.star || 0,
+            comment: this.props.data.comment || "",
         })
     }
 
