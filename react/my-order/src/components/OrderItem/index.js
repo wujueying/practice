@@ -6,8 +6,8 @@ class OrderItem extends Component {
     constructor(props){
         super(props);
         this.state = {
-            editing: true,
-            stars: props.data.star || 0,
+            editing: false,
+            stars: props.data.stars || 0,
             comment: props.data.comment || "",
         }
     }
@@ -33,7 +33,7 @@ class OrderItem extends Component {
                                 (ifCommenteda) ? (
                                     <button className="orderItem__btn orderItem__btn--grey">已评价</button>
                                 ) : (
-                                    <button className="orderItem__btn orderItem__btn--red" onClick={this.handleOpenEditArea()}>评价</button>
+                                    <button className="orderItem__btn orderItem__btn--red" onClick={this.handleOpenEditArea}>评价</button>
                                 )
                             }
                         </div>
@@ -81,6 +81,7 @@ class OrderItem extends Component {
     }
 
     renderEditArea(){
+
         return (
 
             <div className="orderItem__commentContainer">
@@ -92,18 +93,12 @@ class OrderItem extends Component {
                   {this.renderStars()}
                   <button 
                     className='orderItem__btn orderItem__btn--grey'
-                    onClick={this.handleSubmitComment()}
+                    onClick={this.handleSubmitComment}
                   >
                       提交
                   </button>  
-                  <button 
-                    className="orderItem__btn orderItem__btn--red" 
-                    onClick={this.handleCancelComment}
-                  >
-                      取消
-                  </button>  
+   
             </div>
-       
         )
     }
 
@@ -122,7 +117,7 @@ class OrderItem extends Component {
     handleCancelComment(){
         this.setState({
             editing: false,
-            stars: this.props.data.star || 0,
+            stars: this.props.data.stars || 0,
             comment: this.props.data.comment || "",
         })
     }
