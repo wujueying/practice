@@ -58,3 +58,14 @@
   space-around: 子项在侧轴平分剩余空间
   space-between: 子项在侧轴先分布在两头，再平分剩余空间
   stretch：设置子项元素高度平分父元素高度
+
+### align-content 和 align-items 区别
+  - align-items 适用于单行情况下，只有上对齐、下对齐、居中和拉伸
+  - align-content 适用于换行（多行）的情况下（单行情况下无效），可以设置上对齐、下对齐、居中、拉伸以及平均分配剩余空间等属性值
+  - 总结就是单行找align-items 多行找align-content
+
+## flex-flow 
+  flex-flow属性是flex-direction和flex-wrap属性的复合属性 
+  相当于同时设置了flex-direction 和 flex-wrap
+  把设置主轴方向和是否换行 （换列）简写
+  flex-flow: column wrap; --->  flex-direction: column; flex-wrap: wrap;
