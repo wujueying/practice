@@ -1,25 +1,22 @@
-// const array = [1,2,3,[4,5,[2]]];
-// const aa = (arr) => {
-//   let newArray = [];
-//   const arrMap = (arr)=>{
-//     arr.map((item,index)=>{
-//         if(typeof item === 'number'){
-//           newArray.push(item);
-//         }
-//     })
-//   }
-//   arr.map((item,index)=>{
-//     if(typeof item === 'number'){
-//       newArray.push(item);
-//     }else{
-//         arrMap(item);
-//     }
-// })
 
-// return newArray;
+
+
+// var arr = [1,2,34,5,6,78,4];
+
+// const aaa = (arr) => {
+//     for(let j=0;j<arr.length;j++){
+//         for(let i =0; i<arr.length-j; i++){
+//             if(arr[i] > arr[i+1]){
+//                 let temp = arr[i+1];
+//                 arr[i+1] = arr[i];
+//                 arr[i] = temp;
+//             }
+//         }
+//     }
+    
+//     return arr;
 // }
 
-// console.log(aa(array)) ;
-
+// console.log(arr);
 
 
