@@ -19,4 +19,8 @@
 
 // console.log(arr);
 
-
+var arr = ["1","2","3"];
+arr = arr.map(function (data) {
+    return +data;
+});//此时arr变成[1,2,3]
+console.log(arr);
