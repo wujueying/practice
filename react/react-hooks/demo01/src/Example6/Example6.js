@@ -9,7 +9,7 @@ function Example6(){
             <Color>
               <ShowArea />
               <Button />
-            </Color>
+            </Color >
         </div>
     )
 }
